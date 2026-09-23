@@ -1,1 +1,2 @@
-# campus_management
+# campus_management_system
+
