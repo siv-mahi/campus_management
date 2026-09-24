@@ -7,15 +7,18 @@ public class StudentService{
         if(student.getMarks() == null){
             return 0;
         }
-
-    }
         int total=0;
         for(int marks: student.getMarks()){
             total+=marks;
         }
         return total;
+    }
+
         //calculate average marks
         public double calculateAverage(Student student){
+            if(student.getMarks() == null || student.getMarks().length == 0){
+                return 0;
+            }
             int total=calculateTotal(student);
             return (double)total/student.getMarks().length;
         }
@@ -65,6 +68,8 @@ public class StudentService{
                 else {
                     return 'F';
                 }
+            }
+
                 // pass or fail
                 public String passOrfail(Student student){
                     int[] marks = student.getMarks();
@@ -77,9 +82,10 @@ public class StudentService{
                     }
                     else {
                         return "Fail";
+                        }
                 }
 
-            }public void displayReportCard(Student student){
+                    public void displayReportCard(Student student){
                 System.out.println("Student ID: " + student.getStudentId());
                 System.out.println("Student Name: " + student.getStudentName());
                 System.out.println("Age: " + student.getAge());
@@ -99,4 +105,3 @@ public class StudentService{
                 System.out.println("Result: " + passOrfail(student));
             }
     }
-}
