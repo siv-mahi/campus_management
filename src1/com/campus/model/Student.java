@@ -1,6 +1,6 @@
 package com.campus.model;
 
-public class Student{
+public abstract class Student {
     // Encapsulation - daat hide
     //instance variable
 
@@ -78,9 +78,12 @@ public class Student{
         if(showMarks){
             System.out.println("Marks: " + java.util.Arrays.toString(marks));
         }
-
-
+        studentType();
     }
+
+    public abstract void studentType();
+
+    public abstract void generatereport();
 
     public static void displayStudentCount(){
         System.out.println("Total Students: " + studentCount);
