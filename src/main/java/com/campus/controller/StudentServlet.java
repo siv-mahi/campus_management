@@ -1,9 +1,9 @@
 package com.campus.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import com.campus.services.StudentService;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,23 +18,22 @@ public class StudentServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws IOException,ServletException {
-                var students = studentService.getStudents();
-              request.setAttribute("students", students);
-              RequestDispatcher dispatcher = request.getRequestDispatcher("/student.jsp");
-              dispatcher.forward(request, response);
-       
+            throws IOException, ServletException {
+        var students = studentService.getStudents();
+        request.setAttribute("students", students);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/student.jsp");
+        dispatcher.forward(request, response);
+        
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws IOException {
+
         String name = request.getParameter("name");
         String course = request.getParameter("course");
-        studentService.addStudent(name, course);
+        int semester = Integer.parseInt(request.getParameter("semester"));
+        studentService.addStudent(name, course, semester);
         response.sendRedirect("/students");
-        
     }
-
-    
 }
